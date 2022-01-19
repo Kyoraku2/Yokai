@@ -1,0 +1,1565 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/*********************************
+ *  Début de la feuille de style
+ *********************************/
+
+body {
+    line-height: 1.3;
+    font-size: 15px;
+    --backgroundcolor: #48b4e0;
+    --textcolor: black;
+    --gridcolor:#d7c1a1;
+    --cardbackcolor:#cfbc9d;
+    --signcolor:#955d0b;
+    --signcolorborder:#714709;
+    --btncolor:rgb(238, 101, 128);
+    color: var(--textcolor);
+    background: var(--backgroundcolor);
+    transition-duration: 0.4s;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+body.dark{
+    --backgroundcolor: #192086;
+    --textcolor: white;
+    --gridcolor: #38364b;
+    --cardbackcolor:#423f55;
+    --signcolor:#242424;
+    --signcolorborder:#000000;
+    --btncolor:rgb(171,57,79);
+}
+
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+.hidden{
+    display: none;
+}
+
+
+/** Grilles **/
+#grille {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: var(--gridcolor);
+    padding: 1.5em;
+    border: black solid 1px;
+    border-radius: 1em;
+    display: inline-block;
+    transition: 0.4s;
+}
+
+
+#tableJeu{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+#tableJeu > p{
+    margin-bottom: 1em;
+}
+
+#board-container{
+  min-width: 358px;
+  max-width: 358px;
+  min-height: 358px;
+  max-height: 358px;
+  overflow: scroll;
+  border-radius: 10px;
+}
+
+#container{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background-color: var(--signcolor);
+  border: 5px solid var(--signcolorborder);
+  border-radius: 10px;
+}
+
+#grille{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+
+#grille td,#grille th {
+    box-sizing: border-box;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border: solid 1px grey;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    border-radius: 10%;
+    background-color: var(--cardbackcolor);
+    position: relative;
+    transition: 0.4s;
+}
+
+
+#grille td:hover{
+    border: solid 2px black;
+}
+
+/* hint aside */
+
+#indices{
+  display: inline-block;
+  float: left;
+  margin: 5%;
+}
+
+#table_hint{
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin-top: 20px;
+}
+
+#table_hint td,th{
+  box-sizing: border-box;
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border: solid 1px grey;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  border-radius: 10%;
+  position: relative;
+}
+
+/****** aside rules ********/
+
+#rules{
+  margin: 5%;
+  display: inline-block;
+  float: right;
+  width: 205px;
+}
+
+#panneau{
+  height: 200px;
+  width: 170px;
+  background-color: var(--signcolor);
+  border: 5px solid var(--signcolorborder);
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+#message{
+  height: 200px;
+  width: 200px;
+  background-color: var(--gridcolor);
+  border-radius: 5px;
+  display:table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+
+/********** Menu animé **********/
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10%;
+}
+::-webkit-scrollbar:horizontal {
+  width: 10%;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--signcolor);
+  border-radius: 15px;
+}
+
+#selectJoin::-webkit-scrollbar-track {
+  background-color: var(--cardbackcolor);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-corner {
+	background: var(--signcolor);
+}
+
+/* Menu */
+
+.copyright{
+  position: relative;
+  float: right;
+  margin: 20px;
+  font-size: 10px;
+}
+
+#rulesBtn{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 1.25em;
+  height: 1.25em;
+  border: grey solid 1px;
+  background-color: var(--cardbackcolor);
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#logo{
+  width: 300px;
+  height: 129px;
+  margin: 1em auto 2em auto;
+  background-image: url("./images/logo.png");
+  background-repeat: no-repeat;
+}
+
+#startSection{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--gridcolor);
+    border-radius: 10px;
+    padding: 1em;
+    border: black solid 1px;
+}
+
+#listGames{
+  background-color: white;
+  border-radius: 10px;
+  background-color: var(--cardbackcolor);
+}
+
+#selectJoin{
+    border: none;
+    margin: 0.25em;
+    width: 95%;
+    background-color: white;
+    background-color: var(--cardbackcolor);
+}
+
+
+#selectJoin option{
+    padding: 0.25em;
+    border-radius: 10px;
+    color: var(--textcolor);
+    font-weight: bold;
+}
+
+.gameName{
+    text-align:left;
+}
+
+.gamePlayers{
+    text-align:right;
+}
+
+#btnCreate, #btnJoin, #happy_yokai, #replay{
+    display: block;
+    color: #fff;
+    padding: 1.5em;
+    font-weight: bold;
+    border: none;
+    border-radius: 40px;
+    background-color: var(--btncolor);
+    transition-duration: 0.4s;
+    border: 2px solid var(--btncolor);
+    margin : 1em auto  1em auto;
+}
+
+#btnCreate{
+    padding-left: 2.3em;
+    padding-right: 2.3em;
+}
+
+#btnJoin{
+    margin-top: 1em;
+}
+
+#btnCreate:hover, #btnJoin:hover,#happy_yokai:hover, #replay:hover{
+    background-color: white;
+    color: rgb(238, 101, 128);
+    box-shadow: 0 0 6px 2px rgba(238, 101, 128,0.24);
+}
+
+
+
+/* Leaves */
+#leaves {
+    position:relative;
+    top:-50px;
+    width:100%;
+    text-align: right;
+    z-index: -1;
+}
+
+#leaves i{
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    background: linear-gradient(to bottom right, rgb(253, 132, 132), rgb(255, 216, 223));
+    transform: skew(20deg);
+    border-radius: 5% 40% 70%;
+    animation: falling1 5s 0s infinite;
+    -webkit-animation: falling1 5s 0s infinite;
+}
+#leaves i:nth-of-type(2n){
+    animation: falling2 5s 0s infinite;
+}
+#leaves i:nth-of-type(3n){
+    animation: falling3 5s 0s infinite;
+}
+#leaves i:nth-of-type(4n){
+    animation: falling4 5s 0s infinite;
+}
+
+
+@keyframes falling1 {
+    0% { /* animation begining */
+        transform: translate(50px,0) rotate(0deg); /* Initial position */
+    }
+    100% {
+        transform: translate(-350px,700px) rotate(90deg); /* Target and rotation */
+        opacity: 0;
+    }
+}
+
+@keyframes falling2 {
+    0% {
+        transform: translate(-300px,0) rotate(90deg);
+    }
+
+    100% {
+        transform: translate(-600px,700px) rotate(0deg);
+        opacity: 0;
+    }
+}
+
+@keyframes falling3 {
+    0% {
+       transform: translate(-600px,0) rotate(-20deg);
+    }
+
+    100% {
+        transform: translate(-900px,700px) rotate(195deg);
+        opacity: 0;
+    }
+}
+
+@keyframes falling4 {
+    0% {
+       transform: translate(-800px,0) rotate(-20deg);
+    }
+
+    100% {
+        transform: translate(-1150px,700px) rotate(195deg);
+        opacity: 0;
+    }
+}
+
+#leaves i:nth-of-type(n){
+    height:23px; width:30px;
+}
+
+#leaves i:nth-of-type(n+1){
+    height:11px; width:16px;
+}
+#leaves i:nth-of-type(3n+2){
+    height:17px; width:23px;
+}
+#leaves i:nth-of-type(2n+3){
+    height:23px; width:17px;
+}
+
+/** Delay between leaves**/
+#leaves i:nth-of-type(n){
+    animation-delay: 1.5s;
+}
+#leaves i:nth-of-type(2n){
+    animation-delay: 3.5s;
+}
+#leaves i:nth-of-type(3n){
+    animation-delay: 2s;
+}
+#leaves i:nth-of-type(4n){
+    animation-delay: 4s;
+}
+#leaves i:nth-of-type(5n){
+    animation-delay: 4.5s;
+}
+#leaves i:nth-of-type(6n){
+    animation-delay: 2.5s;
+}
+#leaves i:nth-of-type(7n){
+    animation-delay: 5.3s;
+}
+#leaves i:nth-of-type(8n){
+    animation-delay: 3s;
+}
+#leaves i:nth-of-type(9n){
+    animation-delay: 2.3s;
+}
+#leaves i:nth-of-type(10n){
+    animation-delay: 4.1s;
+}
+#leaves i:nth-of-type(11n){
+    animation-delay: 1s;
+}
+#leaves i:nth-of-type(12n){
+    animation-delay: 3.2s;
+}
+#leaves i:nth-of-type(13n){
+    animation-delay: 4.7s;
+}
+#leaves i:nth-of-type(14n){
+    animation-delay: 2.3s;
+}
+#leaves i:nth-of-type(15n){
+    animation-delay: 1.8s;
+}
+#leaves i:nth-of-type(16n){
+    animation-delay: 5s;
+}
+#leaves i:nth-of-type(17n){
+    animation-delay: 2.3s;
+}
+#leaves i:nth-of-type(18n){
+    animation-delay: 1.7s;
+}
+#leaves i:nth-of-type(19n){
+    animation-delay: 4.3s;
+}
+#leaves i:nth-of-type(20n){
+    animation-delay: 2.5s;
+}
+#leaves i:nth-of-type(21n){
+    animation-delay: 1.3s;
+}
+#leaves i:nth-of-type(22n){
+    animation-delay: 0.3s;
+}
+#leaves i:nth-of-type(23n){
+    animation-delay: 5.3s;
+}
+#leaves i:nth-of-type(24n){
+    animation-delay: 3.3s;
+}
+#leaves i:nth-of-type(24n){
+    animation-delay: 4.3s;
+}
+
+
+/********** Dos des cartes de jeu **********/
+
+.cartesDos, .darkCenter, .lightCenter, .lightCenter:after, .corners, .corners:after, .tinyCenter, .cornersBis{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 10%;
+}
+
+.cartesDos{
+ width: 44px;
+ height: 44px;
+ background: white;
+ position: relative;
+}
+
+.darkCenter{
+ width: 40px;
+ height: 40px;
+ background: radial-gradient(#b31919, black);
+ border-radius: 30%;
+}
+
+.lightCenter{
+ width: 20px;
+ height: 20px;
+ background-color: white;
+ transform: rotate(45deg);
+ z-index: 10;
+}
+
+.tinyCenter{
+ width: 13px;
+ height: 13px;
+ background-color: white;
+ box-shadow: -0em 0 5px 0px #464646;
+ transform: rotate(45deg);
+ z-index: 10;
+}
+
+.tinyCenter-A, .tinyCenter-B{
+ width: 9px;
+ height: 9px;
+ background-color: white;
+ z-index: 10;
+}
+
+.tinyCenter-A{
+ transform: rotate(45deg)
+}
+
+.tinyCenter-B{
+ box-shadow: none;
+ transform: rotate(45deg)
+}
+
+/*** coins des cartes ***/
+
+.corners{
+ width: 9px;
+ height: 9px;
+ background: white;
+}
+
+.corner-LU{
+ margin-left: 0;
+ margin-top: 0;
+ transform: rotate(10deg) skewY(-20deg);
+ z-index: 10;
+}
+
+.corner-RU{
+ margin-right: 0;
+ margin-top: 0;
+ transform: rotate(-10deg) skewY(20deg);
+ z-index: 10;
+}
+
+.corner-LD{
+ margin-left: 0;
+ margin-bottom: 0;
+ transform: rotate(-10deg) skewY(20deg);
+ z-index: 10;
+}
+
+.corner-RD{
+ margin-right: 0;
+ margin-bottom: 0;
+ transform: rotate(10deg) skewY(-20deg);
+ z-index: 10;
+}
+
+/*** Pics sur les coins ***/
+
+.cornersBis{
+ width: 3px;
+ height: 3px;
+ background: white;
+ z-index: 10;
+}
+
+.corner-LU-A{
+ margin-left: 7px;
+ margin-top: 2px;
+ transform: rotate(55deg);
+ z-index: 10;
+}
+
+.corner-LU-B{
+ margin-left: 2px;
+ margin-top: 7px;
+ transform: rotate(35deg);
+ z-index: 10;
+}
+
+.corner-RU-A{
+ margin-right: 2px;
+ margin-top: 7px;
+ transform: rotate(55deg);
+ z-index: 10;
+}
+
+.corner-RU-B{
+ margin-right: 7px;
+ margin-top: 2px;
+ transform: rotate(35deg);
+ z-index: 10;
+}
+
+.corner-RD-A{
+ margin-right: 2px;
+ margin-bottom: 7px;
+ transform: rotate(35deg);
+ z-index: 10;
+}
+
+.corner-RD-B{
+ margin-right: 7px;
+ margin-bottom: 2px;
+ transform: rotate(55deg);
+ z-index: 10;
+}
+
+.corner-LD-A{
+ margin-left: 2px;
+ margin-bottom: 7px;
+ transform: rotate(55deg);
+ z-index: 10;
+}
+
+.corner-LD-B{
+ margin-left: 7px;
+ margin-bottom: 2px;
+ transform: rotate(35deg);
+ z-index: 10;
+}
+
+/********* Cartes ************/
+
+
+.family{
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+  width: 40px;
+	height: 40px;
+	border-radius: 20%;
+  overflow: hidden;
+}
+
+
+/***** familyA / Feu *****/
+
+  .familyA{
+    background: #930303;
+  }
+
+  .familyA .corners, .familyA .cornersBis{
+    background-color: #d71313;
+  }
+
+	.fire{
+		width: 60%;
+		height: 60%;
+		position: absolute;
+		background-color: #d71313;
+		border-radius: 0 95% 75% 95%;
+		transform-origin: center;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 6%;
+	}
+
+	.fire-medium {
+		width: 45%;
+		height: 45%;
+		background-color: #ff8d14;
+	}
+
+  .fire-small {
+		width: 30%;
+		height: 30%;
+		background-color: #ffd700;
+	}
+
+  .fire-corner{
+    width: 15%;
+    height: 15%;
+    background-color: #ffd700;
+    top: 0;
+  }
+
+  .fire-corner-L{
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .fire-corner-R{
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .fire-corner-L.fire1{
+    transform: rotate(85deg);
+  }
+
+  .fire-corner-L.fire2{
+    transform: rotate(220deg);
+  }
+
+  .fire-corner-L.fire3{
+    transform: rotate(270deg);
+  }
+
+  .fire-corner-L.fire4{
+    transform: rotate(180deg);
+  }
+
+  .fire-corner-L.fire5{
+    transform: rotate(130deg);
+  }
+
+  .fire-corner-R.fire1{
+    transform: rotate(175deg);
+  }
+
+  .fire-corner-R.fire2{
+    transform: rotate(310deg);
+  }
+
+  .fire-corner-R.fire3{
+    transform: rotate(360deg);
+  }
+
+  .fire-corner-R.fire4{
+    transform: rotate(270deg);
+  }
+
+  .fire-corner-R.fire5{
+    transform: rotate(220deg);
+  }
+
+
+  .fire{
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .fire-medium.fire{
+    animation-duration: 1s;
+  }
+
+  .fire-small.fire{
+    animation-duration: 0.75s;
+  }
+
+  .fire1{
+		transform: rotate(35deg);
+    animation-name: rotate1;
+    animation-delay: 0s;
+  }
+
+  @keyframes rotate1 {
+      from {transform: rotate(35deg);}
+      to {transform: rotate(55deg);}
+  }
+
+  .fire2{
+		transform: rotate(75deg);
+	  animation-delay: 0.1s;
+    animation-name: rotate2;
+  }
+
+  @keyframes rotate2 {
+      from {transform: rotate(75deg);}
+      to {transform: rotate(105deg);}
+  }
+
+
+	.fire3{
+		transform: rotate(-15deg);
+	  animation-delay: 0.2s;
+    animation-name: rotate3;
+  }
+
+  @keyframes rotate3 {
+      from {transform: rotate(-15deg);}
+      to {transform: rotate(15deg);}
+  }
+
+  .fire4{
+		transform: rotate(-60deg);
+	  animation-delay: 0.3s;
+    animation-name: rotate4;
+  }
+
+  @keyframes rotate4 {
+      from {transform: rotate(-60deg);}
+      to {transform: rotate(-30deg);}
+  }
+
+  .fire5{
+		transform: rotate(120deg);
+    animation-delay: 0.5s;
+    animation-name: rotate5;
+  }
+
+  @keyframes rotate5 {
+      from {transform: rotate(120deg);}
+      to {transform: rotate(150deg);}
+  }
+
+  .fire-corner{
+    animation: none;
+  }
+
+  /***** familyB/Eau/vert *****/
+
+  .familyB{
+    background: #009425;
+  }
+
+  .familyB .corners, .familyB .cornersBis{
+    background-color: #00ff87;
+  }
+
+  .drop{
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    background-color: #00ff87;
+    border-radius: 0 95% 75% 95%;
+    transform-origin: center;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: rotate(45deg);
+    margin-bottom: 10%;
+  }
+
+  .drop-highlight{
+    width: 18%;
+    height: 34%;
+    background-color: white;
+    margin-bottom: auto;
+    margin-right: 76%;
+    transform: rotate(0deg);
+
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: light;
+  }
+
+  .drop-highlight-2{
+    width: 26%;
+    height: 46%;
+    background-color: #ffffff9c;
+    margin-bottom: auto;
+    margin-right: 67%;
+    margin-top: 33%;
+    transform: rotate(0deg);
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: light-2;
+  }
+
+
+  @keyframes light {
+      from {
+        margin-right: 76%;
+        margin-top: 31%;
+        width: 18%;
+        height: 34%;
+      }
+      to {
+        margin-right: 55%;
+        margin-top: 19%;
+        width: 27%;
+        height: 27%;
+      }
+  }
+
+  @keyframes light-2 {
+      from {
+        margin-right: 67%;
+        margin-top: 33%;
+        width: 26%;
+        height: 46%;
+      }
+      to {
+        margin-right: 45%;
+        margin-top: 18%;
+        width: 36%;
+        height: 36%;
+      }
+  }
+
+/***** FamilyC - fleur - violet ******/
+
+.familyC{
+  background-color: #750869;
+}
+
+.fleur{
+  background-color: #ffa4f5;
+  width: 25%;
+  height: 70%;
+  border-radius: 10px;
+  position: absolute;
+  margin: auto;
+  margin-left: 38%;
+  margin-top: 22%;
+
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: rotate_fleur_1;
+
+  animation-direction:normal;
+  animation-duration: 10s;
+}
+
+.familyC .corners, .familyC .cornersBis{
+  background-color: #ffa4f5;;
+}
+
+.fleur.smol{
+  background-color: #e365e3;
+  width: 18%;
+  height: 50%;
+  margin-left: 40%;
+  margin-top: 32%;
+  animation-duration: 7s;
+  animation-direction:reverse;
+}
+
+.fleur.smoler{
+  background-color: #750869;
+  width: 11%;
+  height: 30%;
+  margin-left: 44%;
+  margin-top: 43%;
+  animation-duration: 5s;
+  animation-direction:normal;
+}
+
+.fleur2{
+  transform: rotate(60deg);
+  animation-name: rotate_fleur_2;
+}
+
+.fleur3{
+  transform: rotate(120deg);
+  animation-name: rotate_fleur_3;
+}
+
+@keyframes rotate_fleur_1 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+@keyframes rotate_fleur_2 {
+  from {transform: rotate(60deg);}
+  to {transform: rotate(420deg);}
+}
+
+@keyframes rotate_fleur_3 {
+  from {transform: rotate(120deg);}
+  to {transform: rotate(480deg);}
+}
+
+
+/*Family D - Bleu - electrique*/
+
+
+.familyD{
+  background-color: #0087e9;
+}
+
+.familyD .corners, .familyD .cornersBis{
+  background-color: #69c0ff;
+}
+.eclair{
+  position: absolute;
+  left: 4px;
+  right: 0;
+  bottom: 0;
+  top: 12px;
+  transform: rotate(-25deg);
+
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: eclair_rotate;
+  animation-direction:alternate;
+  animation-duration: 3s;
+  animation-delay: 0s;
+}
+
+.eclair_1{
+  left: 4px;
+  top: 19px;
+  animation-duration: 1.6s;
+  animation-delay: 0.3s;
+  animation-direction: alternate-reverse;
+  transform: rotate(10deg);
+}
+
+.eclair_2{
+  left: 12px;
+  top: 12px;
+  animation-duration: 2s;
+  animation-delay: 1.5s;
+  transform: rotate(10deg);
+  animation-direction: alternate-reverse;
+}
+
+.eclair_3{
+  left: 14px;
+  top: 20px;
+  animation-duration: 2.9s;
+  animation-delay: 0.7s;
+}
+
+.eclair_4{
+  left: 23px;
+  top: 17px;
+  animation-duration: 1.3s;
+  animation-delay: 0.2s;
+  animation-direction: alternate-reverse;
+  transform: rotate(10deg);
+}
+
+.eclair_5{
+  left: 24px;
+  top: 23px;
+  animation-duration: 2s;
+  animation-delay: 0.1s;
+}
+
+.eclair:before,
+.eclair:after {
+  content: '';
+  position: absolute;
+
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: eclair_flash;
+  animation-direction:alternate;
+  animation-duration: 2s;
+  animation-delay: 0s;
+
+}
+
+.eclair_1:before,
+.eclair_1:after{
+  animation-duration: 2.1s;
+  animation-delay: 0.7s;
+}
+
+.eclair_2:before,
+.eclair_2:after{
+  animation-delay: 0.3s;
+  animation-duration: 1.4s;
+}
+
+.eclair_3:before,
+.eclair_3:after{
+  animation-delay: 0.1s;
+  animation-duration: 2.1s;
+}
+
+.eclair_4:before,
+.eclair_4:after{
+  animation-delay: 0.5s;
+  animation-duration: 2.4s;
+}
+
+.eclair_5:before,
+.eclair_5:after{
+  animation-delay: 0.9s;
+  animation-duration: 1.4s;
+}
+
+.eclair:before {
+  width: 0;
+  height: 0;
+  left: -3px;
+  top: 5px;
+  border-style: solid;
+  border-width: 0px 3px 6px 12px;
+  border-color: transparent transparent #0f00c3 transparent;
+  transform: rotate(-60deg);
+}
+
+.eclair:after {
+  width: 0;
+  height: 0;
+  left: 4px;
+  top: -1px;
+  border-style: solid;
+  border-width: 0px 3px 6px 12px;
+  border-color: transparent transparent #0f00c3 transparent;
+  transform: rotate(-60deg) scaleY(-1) scaleX(-1);
+}
+
+@keyframes eclair_flash {
+  from {border-color: transparent transparent #0f00c3 transparent;}
+  to {border-color: transparent transparent #69c0ff transparent;}
+}
+
+@keyframes eclair_rotate {
+  from {transform: rotate(-25deg);}
+  to {transform: rotate(10deg);}
+}
+
+/* Cartes indice */
+
+.diagonal1{
+  width: 6em;
+  height: 3em;
+  border-bottom: 2px solid white;
+  transform:
+    translateY(-20px)
+    translateX(5px)
+    rotate(45deg);
+  position: absolute;
+  top: 1em;
+  left: 0;
+  z-index: 100;
+}
+
+.diagonal2{
+  width: 6em;
+  height: 3em;
+  border-bottom: 2px solid white;
+  transform:
+    translateY(-20px)
+    translateX(5px)
+    rotate(135deg);
+  position: absolute;
+  top: 1.25em;
+  left: 0;
+  z-index: 1;
+}
+
+.line1{
+  width: 2em;
+  height: 1em;
+  border-bottom: 2px solid white;
+  transform:
+    translateY(-20px)
+    translateX(5px)
+    rotate(90deg);
+  position: absolute;
+  top: 1.25em;
+  left: 0.5em;
+  z-index: 10;
+}
+
+.line2{
+  width: 2em;
+  height: 1em;
+  border-bottom: 2px solid white;
+  transform:
+    translateY(-20px)
+    translateX(5px)
+    rotate(150deg);
+  position: absolute;
+  top: 2.9em;
+  left: -0.5em;
+  z-index: 10;
+}
+
+.line3{
+  width: 2em;
+  height: 1em;
+  border-bottom: 2px solid white;
+  transform:
+    translateY(-20px)
+    translateX(5px)
+    rotate(208deg);
+  position: absolute;
+  top: 2.87em;
+  left: 0.5em;
+  z-index: 10;
+}
+
+.familyA.hint{
+  background-color: #930303;
+}
+
+.familyA.hint .corners, .familyA.hint .cornersBis{
+  background-color: white;
+}
+
+.familyB.hint{
+  background-color: #009425;
+}
+.familyB.hint .corners, .familyB.hint .cornersBis{
+  background-color: white;
+}
+
+.familyC.hint{
+  background-color: #750869;
+}
+.familyC.hint .corners, .familyC.hint .cornersBis{
+  background-color: white;
+}
+
+.familyD.hint{
+  background-color: #0087e9;
+}
+.familyD.hint .corners, .familyD.hint .cornersBis{
+  background-color: white;
+}
+
+.familyA.familyB.hint{
+  background-color: #930303;
+}
+.familyA.familyB.hint:after {
+  content: ' ';
+  border-top: 2.75em solid #009425;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyA.familyC.hint{
+  background-color: #750869;
+}
+.familyA.familyC.hint::after{
+  content: ' ';
+  border-top: 2.75em solid #930303;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyA.familyD.hint{
+  background-color: #930303;
+}
+.familyA.familyD.hint::after{
+  content: ' ';
+  border-top: 2.75em solid #0087e9;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyB.familyC.hint{
+  background-color: #009425;
+}
+.familyB.familyC.hint::after{
+  content: ' ';
+  border-top: 2.75em solid #750869;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyB.familyD.hint{
+  background-color: #0087e9;
+}
+.familyB.familyD.hint::after{
+  content: ' ';
+  border-top: 2.75em solid #009425;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyC.familyD.hint{
+  background-color: #750869;
+}
+.familyC.familyD.hint::after{
+  content: ' ';
+  border-top: 2.75em solid #0087e9;
+  border-left: 2.75em solid transparent;
+  width: 0;
+  position: absolute;
+  right: 0;
+}
+
+.familyA.familyB.familyC.hint{
+  background-color: #930303;
+}
+
+.familyA.familyB.familyC.hint::after{
+  display: none;
+}
+
+.triangleDown{
+  margin-right: 0;
+  margin-top: 0;
+  width: 3em;
+  height: 3em;
+  transform: rotate(-45deg) skewX(20deg) skewY(20deg);
+  z-index: 10;
+  position: absolute;
+  top: 1.25em;
+  left: -0.30em;
+}
+
+.triangleLeft{
+  margin-right: 0;
+  margin-top: 0;
+  width: 2em;
+  height: 2em;
+  z-index: 10;
+  position: absolute;
+  top: 0em;
+  left: -0.65em;
+  z-index: 9;
+}
+
+.familyA.familyB.familyC.hint .triangleDown{
+  background-color: #009425;
+}
+
+.familyA.familyB.familyC.hint .triangleLeft{
+  background-color: #750869;
+}
+
+
+.familyA.familyB.familyD.hint{
+  background-color: #009425;
+}
+
+.familyA.familyB.familyD.hint::after{
+  display: none;
+}
+
+.triangleDown{
+  margin-right: 0;
+  margin-top: 0;
+  width: 3em;
+  height: 3em;
+  transform: rotate(-45deg) skewX(20deg) skewY(20deg);
+  z-index: 10;
+  position: absolute;
+  top: 1.25em;
+  left: -0.30em;
+}
+
+.triangleLeft{
+  margin-right: 0;
+  margin-top: 0;
+  width: 2em;
+  height: 2em;
+  z-index: 10;
+  position: absolute;
+  top: 0em;
+  left: -0.65em;
+  z-index: 9;
+}
+
+.familyA.familyB.familyD.hint .triangleDown{
+  background-color: #930303;
+}
+
+.familyA.familyB.familyD.hint .triangleLeft{
+  background-color: #0087e9;
+}
+
+
+
+.familyA.familyC.familyD.hint{
+  background-color: #0087e9;
+}
+
+.familyA.familyC.familyD.hint::after{
+  display: none;
+}
+
+.triangleDown{
+  margin-right: 0;
+  margin-top: 0;
+  width: 3em;
+  height: 3em;
+  transform: rotate(-45deg) skewX(20deg) skewY(20deg);
+  z-index: 10;
+  position: absolute;
+  top: 1.25em;
+  left: -0.30em;
+}
+
+.triangleLeft{
+  margin-right: 0;
+  margin-top: 0;
+  width: 2em;
+  height: 2em;
+  z-index: 10;
+  position: absolute;
+  top: 0em;
+  left: -0.65em;
+  z-index: 9;
+}
+
+.familyA.familyC.familyD.hint .triangleDown{
+  background-color: #750869;
+}
+
+.familyA.familyC.familyD.hint .triangleLeft{
+  background-color: #930303;
+}
+
+
+
+.familyC.familyD.familyB.hint{
+  background-color: #750869;
+}
+
+.familyC.familyD.familyB.hint::after{
+  display: none;
+}
+
+.triangleDown{
+  margin-right: 0;
+  margin-top: 0;
+  width: 3em;
+  height: 3em;
+  transform: rotate(-45deg) skewX(20deg) skewY(20deg);
+  z-index: 10;
+  position: absolute;
+  top: 1.25em;
+  left: -0.30em;
+}
+
+.triangleLeft{
+  margin-right: 0;
+  margin-top: 0;
+  width: 2em;
+  height: 2em;
+  z-index: 10;
+  position: absolute;
+  top: 0em;
+  left: -0.65em;
+  z-index: 9;
+}
+
+.familyC.familyD.familyB.hint .triangleDown{
+  background-color: #0087e9;
+}
+
+.familyC.familyD.familyB.hint .triangleLeft{
+  background-color: #009425;
+}
+
+
+
+.familyA.familyB.familyC.familyD.hint{
+  background-color: gray;
+}
+
+.familyA.familyB.familyC.familyD.hint::after{
+  display: block;
+  border-style : solid;
+  border-color : #0087e9 #750869 #009425 #930303;
+  border-width : 20px 20px 20px 20px ;
+  width : 0px;
+  height : 0px;
+}
+
+
+/*  -------------  MARRE  --------------  */
+
+.marre{
+  height: 240px;
+  width: 400px;
+  position: absolute;
+  right: 20px;
+  bottom: 0px;
+  display: block;
+  background-image: url("images/canardbouge.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+  display: inherit;
+}
+
+#kitsune{
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  left: 30px;
+  bottom: 0px;
+  display: block;
+  background-image: url("images/kitsune.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+}
+
+#yokais{
+  height: 145px;
+  width: 500px;
+  position: relative;
+  margin: auto;
+  margin-bottom: -28px;
+  display: block;
+  background-image: url("images/yokais.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+}

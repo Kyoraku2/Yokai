@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Yokai</title>
+    <link type="text/css" rel="stylesheet" href="yokai.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./yokai.js"></script>
+</head>
+
+<main>
+    <div id="leaves">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <section id="startSection">
+        <button id="rulesBtn">?</button>
+        <div id="logo"></div>
+        <div id="menu">
+            <button id="btnCreate">Créer !</button>
+            <label><strong>Nombre de joueurs :</strong></label>
+            <label class="playerCheck"><input type="radio" name="nbPlayers" value="2" checked> 2 </label>
+            <label class="playerCheck"><input type="radio" name="nbPlayers" value="3"> 3</label>
+            <label class="playerCheck"><input type="radio" name="nbPlayers" value="4"> 4</label>
+            <button id="btnJoin">Rejoindre !</button>
+            <div id="listGames">
+                <select id="selectJoin" size="3">
+                </select>
+
+            </div>
+        </div>
+        <div class="hidden" id="gameRules">
+            <strong>Jeu de mémoire coopératif dans lequel on communique en donnant des indices !</strong><br><br>
+            On place les cartes Yokkai sur la table, faces cachées de manière à former une grille de 4 x 4. Chaque joueur à son tour doit effectuer les trois actions suivantes :<br><br>
+
+            - Observer deux cartes Yokai de son choix et les remettre à leur place.<br>
+            - Déplacer une carte Yokai, pour regrouper les familles ensemble.<br>
+            - Dévoiler ou jouer une carte Indice pour donner des informations aux autres joueurs.<br>
+            <br><br>
+            Quand un joueur le décide ou quand on n'a plus d'indice à placer, on retourne les cartes Yokai et on vérifie si les familles sont réunies. Le jeu est subtil, demande de la concentration et est doté d'une forte rejouabilité !
+            <br><br>
+            <strong>Raccourcis :</strong><br>
+            - Dark mode : ctrl + d<br>
+            - Couper la synthèse vocale : ctrl + e<br><br>
+            
+            <span class="copyright">Réalisé par Marie-Almina GINDRE et Tayeb   HAKKAR.</span>
+
+            <div class="hidden" id="yokais"></div>
+
+        </div>
+
+
+    </section>
+
+    <section id="tableJeu" class="hidden">
+        <div id="container" class="hidden">
+            <div id="board-container"></div>
+        </div>
+
+
+    </section>
+
+    <div id="kitsune"></div>
+    <div class="marre" id="canard"></div>
+
+    </div>
+
+
+</main>
+</html>
